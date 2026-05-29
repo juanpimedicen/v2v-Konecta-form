@@ -729,52 +729,76 @@ function exportarPDF() {
       });
     
       const payload = {
-    
+      
         cliente:
           document.getElementById('cliente')?.value || '',
-    
-        empresa:
-          document.getElementById('empresa')?.value || '',
-    
-        pais:
-          document.getElementById('pais')?.value || '',
-    
-        industria:
-          document.getElementById('industria')?.value || '',
-    
+      
+        sector:
+          document.getElementById('sector')?.value || '',
+      
         contacto:
           document.getElementById('contacto')?.value || '',
-    
-        email:
-          document.getElementById('email')?.value || '',
-    
-        volumenMensual:
-          document.getElementById('volumenMensual')?.value || '',
-    
-        minutosMensuales:
-          document.getElementById('minutosMensuales')?.value || '',
-    
-        canales:
-          document.getElementById('canales')?.value || '',
-    
-        observaciones:
-          document.getElementById('observaciones')?.value || '',
-    
+      
+        cargo:
+          document.getElementById('cargo')?.value || '',
+      
+        ubicacion:
+          document.getElementById('ubicacion')?.value || '',
+      
+        llamadasDia:
+          document.getElementById('llamadasDia')?.value || '',
+      
+        durMedia:
+          document.getElementById('durMedia')?.value || '',
+      
+        pctCooficial:
+          document.getElementById('pctCooficial')?.value || '',
+      
+        agentesTotales:
+          document.getElementById('agentesTotales')?.value || '',
+      
+        agentesIdioma:
+          document.getElementById('agentesIdioma')?.value || '',
+      
+        costeLlamada:
+          document.getElementById('costeLlamada')?.value || '',
+      
+        tecnologia:
+          document.getElementById('tecnologia')?.value || '',
+      
+        plataforma:
+          document.getElementById('plataforma')?.value || '',
+      
+        notas:
+          document.getElementById('notas')?.value || '',
+      
         idiomas:
           idiomasSeleccionados.join(', '),
-    
+      
+        llamadasMes:
+          document.getElementById('c-llamMes')?.innerText || '',
+      
         llamadasCooficiales:
-          document.getElementById('llamadasCooficiales')?.innerText || '',
-    
-        horasTraduccion:
-          document.getElementById('horasTraduccion')?.innerText || '',
-    
-        costeActual:
-          document.getElementById('costeActual')?.innerText || '',
-    
-        agentesSinIdioma:
-          document.getElementById('agentesSinIdioma')?.innerText || ''
-    
+          document.getElementById('c-llamCoof')?.innerText || '',
+      
+        minutosCooficiales:
+          document.getElementById('c-minCoof')?.innerText || '',
+      
+        horasConsumo:
+          document.getElementById('c-horasMes')?.innerText || '',
+      
+        resumenLlamadas:
+          document.getElementById('r-lc')?.innerText || '',
+      
+        resumenHoras:
+          document.getElementById('r-horas')?.innerText || '',
+      
+        resumenCoste:
+          document.getElementById('r-coste')?.innerText || '',
+      
+        resumenAgentes:
+          document.getElementById('r-agentes')?.innerText || ''
+      
       };
     
       console.log(payload);
