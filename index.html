@@ -522,7 +522,7 @@
     <div class="actions-right">
       <button class="btn btn-ghost" onclick="resetForm()">Limpiar</button>
       <button class="btn btn-ghost" onclick="window.print()">Imprimir</button>
-      <button class="btn btn-primary" onclick="exportarPDF()">Enviar ↗</button>
+      <button class="btn btn-primary" onclick="enviarFormulario()">Enviar ↗</button>
     </div>
   </div>
 
@@ -705,10 +705,10 @@ function exportarPDF() {
   <div class="resumen">
     <div class="res-title">C · Resumen Ejecutivo</div>
     <div class="res-grid">
-      <div class="res-card"><div class="res-lbl">Llamadas cooficiales</div><div class="res-val">${lc}</div></div>
-      <div class="res-card"><div class="res-lbl">Horas traducción/mes</div><div class="res-val">${horas}</div></div>
-      <div class="res-card"><div class="res-lbl">Coste mensual actual</div><div class="res-val">${coste}</div></div>
-      <div class="res-card"><div class="res-lbl">Agentes sin idioma</div><div class="res-val">${agentes}</div></div>
+      <div class="res-card"><div class="res-lbl">Llamadas cooficiales</div><div class="res-val" id="llamadasCooficiales">${lc}</div></div>
+      <div class="res-card"><div class="res-lbl">Horas traducción/mes</div><div class="res-val" id="horasTraduccion">${horas}</div></div>
+      <div class="res-card"><div class="res-lbl">Coste mensual actual</div><div class="res-val" id="costeActual">${coste}</div></div>
+      <div class="res-card"><div class="res-lbl">Agentes sin idioma</div><div class="res-val" id="agentesSinIdioma">${agentes}</div></div>
     </div>
   </div>
   <footer>konvecta © 2025 · V2V Traductor «K» con tecnología KRISP · Documento confidencial</footer>
@@ -718,5 +718,126 @@ function exportarPDF() {
   win.document.close();
 }
 </script>
+  <script>
+
+async function enviarFormulario() {
+
+  const payload = {
+    cliente: document.getElementById("cliente")?.value || "",
+    empresa: document.getElementById("empresa")?.value || "",
+    idiomas: document.getElementById("idiomas")?.value || "",
+    volumen: document.getElementById("volumen")?.value || "",
+    observaciones: document.getElementById("observaciones")?.value || ""
+  };
+
+  try {
+
+    const response = await fetch(
+      "AQUI_VA_TU_URL_DE_GOOGLE_SCRIPT",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      }
+    );
+
+    const result = await response.json();
+
+    if(result.success){
+      alert("Formulario enviado correctamente");
+    }
+
+  } catch(err) {
+
+    console.error(err);
+    alert("Error enviando formulario");
+
+  }
+
+}
+
+</script>
+  <script>
+  
+      empresa:
+        document.getElementById('empresa')?.value || '',
+  
+      pais:
+        document.getElementById('pais')?.value || '',
+  
+      industria:
+        document.getElementById('industria')?.value || '',
+  
+      contacto:
+        document.getElementById('contacto')?.value || '',
+  
+      email:
+        document.getElementById('email')?.value || '',
+  
+      volumenMensual:
+        document.getElementById('volumenMensual')?.value || '',
+  
+      minutosMensuales:
+        document.getElementById('minutosMensuales')?.value || '',
+  
+      canales:
+        document.getElementById('canales')?.value || '',
+  
+      observaciones:
+        document.getElementById('observaciones')?.value || '',
+  
+      idiomas:
+        idiomasSeleccionados.join(', '),
+  
+      llamadasCooficiales:
+        document.getElementById('llamadasCooficiales')?.innerText || '',
+  
+      horasTraduccion:
+        document.getElementById('horasTraduccion')?.innerText || '',
+  
+      costeActual:
+        document.getElementById('costeActual')?.innerText || '',
+  
+      agentesSinIdioma:
+        document.getElementById('agentesSinIdioma')?.innerText || ''
+  
+    };
+  
+    console.log(payload);
+  
+    try {
+  
+      const response = await fetch(
+        'https://script.google.com/a/macros/konecta.com/s/AKfycbwx2OhOcqRqmd3RkNpibJCc5fInHelfYTjbJ3EcnPBn2bcRMN3Pe55miMNmDKDtW-xN/exec',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+  
+      const result = await response.json();
+  
+      console.log(result);
+  
+      if(result.success){
+        alert('Datos enviados correctamente');
+      } else {
+        alert('Error guardando datos');
+      }
+  
+    } catch(err){
+  
+      console.error(err);
+      alert('Error enviando formulario');
+  
+    }
+  }
+  
+  </script>
 </body>
 </html>
